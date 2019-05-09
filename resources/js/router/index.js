@@ -5,6 +5,7 @@ import Dashboard from './../components/Dashboard'
 import Product from './../components/product/Product';
 import ProductList from './../components/product/List';
 import ProductCreate from './../components/product/Create';
+import ProductEdit from './../components/product/Edit';
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
               path: 'create',
               name: 'Novo Produto',
               component: ProductCreate
+            },
+            {
+              path: 'edit/:id',
+              name: 'Editar Produto',
+              component: ProductEdit
             }
           ]
         }

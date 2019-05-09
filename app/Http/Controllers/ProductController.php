@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DevChallenge\Http\Requests\ProductRequest;
 use DevChallenge\Http\Controllers\ApiBaseController;
 use DevChallenge\Models\Product;
+use DevChallenge\Models\Category;
 
 class ProductController extends ApiBaseController
 {
@@ -55,7 +56,13 @@ class ProductController extends ApiBaseController
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+
+        if(!$product) {
+            return $this->sendError('Produto não encontrado');
+        }
+
+        return $this->sendResponse($product->toArray(), '');
     }
 
     /**
@@ -76,9 +83,25 @@ class ProductController extends ApiBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $category = Category::find($request->category);
+
+        if(!$product) {
+            return $this->sendError('Produto não encontrado');
+        }
+
+        if(!$category) {
+            return $this->sendError('Categoria não encontrada');
+        }
+
+        $product->category_id = $request->category;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->save();
+
+        return $this->sendResponse($product->toArray(), 'Produto atualizado com sucesso');
     }
 
     /**
@@ -89,6 +112,13 @@ class ProductController extends ApiBaseController
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        if(!$product) {
+            return $this->sendError('Produto não encontrado');
+        }
+        $product->delete();
+
+        return $this->sendResponse('', 'Produto deletado com sucesso');
     }
 }

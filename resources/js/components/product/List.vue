@@ -17,6 +17,7 @@
           </b-dropdown>
         </template>
       </b-table>
+      <p class="text-center p-4" v-if="products.length == 0"><b>Nenhum Produto Cadastrado</b></p>
     </b-card>
   </div>
 </template>
@@ -47,10 +48,36 @@ export default {
       this.$router.push({ path: '/seller/product/create' })
     },
     editProduct (e, id) {
-      alert(id)
+      this.$router.push({ path: '/seller/product/edit/' + id })
     },
     deleteProduct (e, id) {
-      alert(id)
+      this.$snotify.confirm('Tem certeza que deseja Deletar este Produto?', 'Confirmação', {
+        position: 'centerTop',
+        buttons: [
+          {
+            text: 'Sim',
+            action: (toast) => {
+              this.$snotify.remove(toast.id)
+              this.isBusy = true
+              ProductAPI.delete(id).then((response) => {
+                let rsp = response.data.data
+                this.$snotify.success(response.data.message);
+                this.getProducts()
+              }).catch((error) => {
+                this.$snotify.error('Falha ao deletar Produto, atualize a página e tente novamente');
+                this.isBusy = false
+              })
+            },
+            bold: true
+          },
+          {
+            text: 'Não, fechar',
+            action: (toast) => {
+              this.$snotify.remove(toast.id)
+            }
+          }
+        ]
+      })
     },
     getProducts () {
       this.isBusy = true
