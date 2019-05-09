@@ -11,12 +11,22 @@ export default {
     },
     {
       title: true,
-      name: 'Theme',
+      name: 'CADASTROS',
       class: '',
       wrapper: {
         element: '',
         attributes: {}
       }
+    },
+    {
+      name: 'Categorias',
+      url: '/seller/category',
+      icon: 'icon-tag'
+    },
+    {
+      name: 'Produtos',
+      url: '/seller/product/list',
+      icon: 'icon-handbag'
     }
   ]
 }

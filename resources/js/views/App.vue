@@ -24,4 +24,6 @@ export default {
   @import '~bootstrap-vue/dist/bootstrap-vue.css';
   // Import Main styles for this application
   @import './../assets/scss/style';
+  
+  @import "~vue-snotify/styles/material";
 </style>

@@ -20,6 +20,7 @@
       <main class="main">
         <Breadcrumb :list="list"/>
         <div class="container-fluid">
+          <vue-snotify></vue-snotify>
           <router-view></router-view>
         </div>
       </main>

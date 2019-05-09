@@ -8,6 +8,11 @@ class Product extends Model
 {
     protected $fillable = [
       'category_id',
-      'description'
+      'description',
+      'price'
     ];
+
+    public function category(){
+      return $this->belongsTo('DevChallenge\Models\Category');
+    }
 }
