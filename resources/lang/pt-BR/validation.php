@@ -147,7 +147,10 @@ return [
     'attributes' => [
         'description' => 'Descrição',
         'category' => 'Categoria',
-        'price' => 'Preço'
+        'price' => 'Preço',
+        'name' => 'Nome',
+        'email' => 'E-mail',
+        'password' => 'Senha'
     ],
 
 ];

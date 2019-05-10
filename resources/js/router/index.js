@@ -6,6 +6,10 @@ import Product from './../components/product/Product';
 import ProductList from './../components/product/List';
 import ProductCreate from './../components/product/Create';
 import ProductEdit from './../components/product/Edit';
+import Seller from './../components/seller/Seller';
+import SellerList from './../components/seller/List';
+import SellerCreate from './../components/seller/Create';
+import SellerEdit from './../components/seller/Edit';
 
 Vue.use(Router)
 
@@ -43,6 +47,29 @@ export default new Router({
               path: 'edit/:id',
               name: 'Editar Produto',
               component: ProductEdit
+            }
+          ]
+        },
+        {
+          path: 'user',
+          name: 'Usuários',
+          component: Seller,
+          redirect: { path: '/seller/user/list' },
+          children: [
+            {
+              path: 'list',
+              name: 'Listagem',
+              component: SellerList
+            },
+            {
+              path: 'create',
+              name: 'Novo Vendedor',
+              component: SellerCreate
+            },
+            {
+              path: 'edit/:id',
+              name: 'Editar Vendedor',
+              component: SellerEdit
             }
           ]
         }

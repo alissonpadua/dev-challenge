@@ -16,5 +16,6 @@ Route::group(['prefix' => 'api/v1'], function() {
 
   Route::resource('category', 'CategoryController');
   Route::resource('product', 'ProductController');
+  Route::resource('seller', 'SellerController');
 
 });
