@@ -6,5 +6,7 @@ Instructions
 
 - Clone the Repo
 - Copy/Past .env file and set your configurations
+- run composer install
+- run npm install
 - run "php artisan migrate --seed"
 - default seller: user: admin@vendedor.com pass: secret
