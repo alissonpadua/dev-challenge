@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="card card-signin my-5 col-md-6">
             <div class="card-body">
-                <h5 class="card-title text-center">Entrar</h5>
+                <h4 class="card-title text-center">
+                    DEV Challenge
+                </h4>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group row">
@@ -51,8 +53,8 @@
                         </div>
                     </div>
                     <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('Entrar') }}
                             </button>
                         </div>

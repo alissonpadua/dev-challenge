@@ -25,7 +25,7 @@ export default {
     },
     {
       name: 'Vendas',
-      url: '/seller/product/list',
+      url: '/seller/sale/list',
       icon: 'icon-basket-loaded'
     },
     {
