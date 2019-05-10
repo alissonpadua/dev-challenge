@@ -26,6 +26,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('client', 'ClientController');
     Route::resource('paymode', 'PaymodeController');
     Route::resource('sale', 'SaleController');
+    Route::get('sales/{id}/products', 'SaleController@getProductsBySale');
+
+    Route::group(['prefix' => 'dashboard'], function() {
+      Route::get('sales', 'DashboardController@getSalesTotal');
+      Route::get('products', 'DashboardController@getProductTotals');
+    });
 
     Route::get('logout', 'SellerController@logout');
 

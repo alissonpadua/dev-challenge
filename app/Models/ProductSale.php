@@ -14,4 +14,12 @@ class ProductSale extends Model
       'price',
       'qty'
     ];
+
+    public function product() {
+      return $this->belongsTo('DevChallenge\Models\Product');
+    }
+
+    public function sale() {
+      return $this->belongsTo('DevChallenge\Models\Sale');
+    }
 }

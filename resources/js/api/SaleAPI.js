@@ -10,6 +10,9 @@ export default {
   },
   async create (sale) {
     return httpClient.post('/sale', sale)
+  },
+  async findProductsBySale (id) {
+    return httpClient.get('/sales/' + id + '/products')
   }
 
 }

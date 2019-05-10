@@ -22,7 +22,32 @@ class SaleController extends ApiBaseController
      */
     public function index()
     {
-        //
+        $sales = Sale::with(['paymode', 'client'])->get();
+
+        foreach($sales as $sale) {
+            $sale['totalSale'] = $this->getSaleTotal($sale->id);
+        }
+
+        return $this->sendResponse($sales->toArray(), '');
+    }
+
+    private function getSaleTotal($id)
+    {
+        $sale = Sale::find($id);
+        $totalSale = 0;
+        foreach($sale->salesLine as $lineTotal){
+            $totalSale += $lineTotal->qty * $lineTotal->price;
+        }
+
+        return 'R$ ' . number_format($totalSale, 2, ',', '.');
+    }
+
+    public function getProductsBySale($id) {
+        $sale = Sale::find($id);
+        if(!$sale) {
+            return $this->sendError('Venda não foi encontrada'); 
+        }
+        return $this->sendResponse($sale->products(), '');
     }
 
     /**
