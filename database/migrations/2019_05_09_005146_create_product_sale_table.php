@@ -26,6 +26,9 @@ class CreateProductSaleTable extends Migration
               ->references('id')
               ->on('sales');
 
+            $table->integer('qty');
+            $table->decimal('price', 8, 2);
+
             $table->timestamps();
         });
     }

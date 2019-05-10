@@ -1,13 +1,32 @@
 export default {
   items: [
     {
+      title: true,
+      name: 'PRINCIPAL',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
+    },
+    {
       name: 'Dashboard',
       url: '/seller/dashboard',
-      icon: 'icon-speedometer',
-      badge: {
-        variant: 'primary',
-        text: 'NEW'
+      icon: 'icon-chart'
+    },
+    {
+      title: true,
+      name: 'OPERAÇÕES',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
       }
+    },
+    {
+      name: 'Vendas',
+      url: '/seller/product/list',
+      icon: 'icon-basket-loaded'
     },
     {
       title: true,
@@ -19,14 +38,14 @@ export default {
       }
     },
     {
-      name: 'Categorias',
-      url: '/seller/category',
-      icon: 'icon-tag'
-    },
-    {
       name: 'Produtos',
       url: '/seller/product/list',
       icon: 'icon-handbag'
+    },
+    {
+      name: 'Vendedores',
+      url: '/seller/user/list',
+      icon: 'icon-people'
     }
   ]
 }

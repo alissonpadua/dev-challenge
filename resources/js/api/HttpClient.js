@@ -13,6 +13,15 @@ const HttpClient = () => {
       return Promise.reject(error)
     }
   )
+  instance.interceptors.response.use((response) => {
+    return response;
+  }, (error) => {
+    if (401 === error.response.status) {
+      window.location = "/login"
+    } else {
+      return Promise.reject(error);
+    }
+  });
   return instance
 }
 

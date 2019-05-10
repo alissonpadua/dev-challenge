@@ -6073,6 +6073,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -39015,7 +39016,7 @@ var render = function() {
           _vm._v(" "),
           _vm.sellers.length == 0
             ? _c("p", { staticClass: "text-center p-4" }, [
-                _c("b", [_vm._v("Nenhum Produto Cadastrado")])
+                _c("b", [_vm._v("Nenhum Vendedor Cadastrado")])
               ])
             : _vm._e()
         ],
@@ -39870,7 +39871,13 @@ var render = function() {
             attrs: { display: "lg" }
           }),
           _vm._v(" "),
-          _c("b-navbar-nav", { staticClass: "ml-auto" })
+          _c("b-navbar-nav", { staticClass: "ml-auto" }),
+          _vm._v(" "),
+          _c(
+            "b-link",
+            { staticClass: "navbar-brand", attrs: { href: "/api/v1/logout" } },
+            [_vm._v("Sair do Sistema")]
+          )
         ],
         1
       ),
@@ -56340,13 +56347,29 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   items: [{
+    title: true,
+    name: 'PRINCIPAL',
+    "class": '',
+    wrapper: {
+      element: '',
+      attributes: {}
+    }
+  }, {
     name: 'Dashboard',
     url: '/seller/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'primary',
-      text: 'NEW'
+    icon: 'icon-chart'
+  }, {
+    title: true,
+    name: 'OPERAÇÕES',
+    "class": '',
+    wrapper: {
+      element: '',
+      attributes: {}
     }
+  }, {
+    name: 'Vendas',
+    url: '/seller/product/list',
+    icon: 'icon-basket-loaded'
   }, {
     title: true,
     name: 'CADASTROS',
@@ -56356,13 +56379,13 @@ __webpack_require__.r(__webpack_exports__);
       attributes: {}
     }
   }, {
-    name: 'Categorias',
-    url: '/seller/category',
-    icon: 'icon-tag'
-  }, {
     name: 'Produtos',
     url: '/seller/product/list',
     icon: 'icon-handbag'
+  }, {
+    name: 'Vendedores',
+    url: '/seller/user/list',
+    icon: 'icon-people'
   }]
 });
 
@@ -56438,6 +56461,15 @@ var HttpClient = function HttpClient() {
     return config;
   }, function (error) {
     return Promise.reject(error);
+  });
+  instance.interceptors.response.use(function (response) {
+    return response;
+  }, function (error) {
+    if (401 === error.response.status) {
+      window.location = "/login";
+    } else {
+      return Promise.reject(error);
+    }
   });
   return instance;
 };

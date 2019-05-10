@@ -7,6 +7,7 @@
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-navbar-nav class="ml-auto"></b-navbar-nav>
+      <b-link class="navbar-brand" href="/api/v1/logout">Sair do Sistema</b-link>
       <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">

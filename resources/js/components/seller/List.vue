@@ -17,7 +17,7 @@
           </b-dropdown>
         </template>
       </b-table>
-      <p class="text-center p-4" v-if="sellers.length == 0"><b>Nenhum Produto Cadastrado</b></p>
+      <p class="text-center p-4" v-if="sellers.length == 0"><b>Nenhum Vendedor Cadastrado</b></p>
     </b-card>
   </div>
 </template>

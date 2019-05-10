@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DevChallenge\Http\Requests\SellerRequest;
 use DevChallenge\Http\Controllers\ApiBaseController;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use DevChallenge\User;
 
 class SellerController extends ApiBaseController
@@ -117,5 +118,10 @@ class SellerController extends ApiBaseController
         $seller->delete();
 
         return $this->sendResponse('', 'Vendedor deletado com sucesso');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
     }
 }
