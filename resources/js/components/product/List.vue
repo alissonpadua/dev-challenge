@@ -9,6 +9,13 @@
         striped hover responsive
         :items="productsTable.items"
         :fields="productsTable.fields">
+        <template slot="price" slot-scope="row">
+          <money class="inputOnTable form-control col-md-6"
+            disabled
+            v-bind="money"
+            v-model="productsTable.items[row.index].price">
+          </money>
+        </template>
         <template slot="controls" slot-scope="row">
           <b-dropdown id="dropdown-1" variant="primary">
             <template slot="button-content"><i class="cui-wrench icons font-2xl"></i></template>
@@ -24,8 +31,10 @@
 
 <script>
 import ProductAPI from './../../api/ProductAPI'
+import { Money } from 'v-money'
 
 export default {
+  components: { Money },
   name: 'product-list',
   data () {
     return {
@@ -40,6 +49,13 @@ export default {
           { key: "controls", label: "" }
         ],
         items: []
+      },
+      money: {
+        decimal: ',',
+        thousands: '.',
+        prefix: 'R$ ',
+        precision: 2,
+        masked: false
       }
     }
   },
@@ -109,4 +125,3 @@ export default {
     pointer-events: none;
   }
 </style>
-

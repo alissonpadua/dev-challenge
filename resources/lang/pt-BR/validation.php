@@ -87,7 +87,7 @@ return [
         'numeric' => 'O campo :attribute deve ser pelo menos :min.',
         'file'    => 'O campo :attribute deve ter pelo menos :min kilobytes.',
         'string'  => 'O campo :attribute deve ter pelo menos :min caracteres.',
-        'array'   => 'O campo :attribute deve ter pelo menos :min itens.',
+        'array'   => ':attribute deve ter pelo menos :min item(s).',
     ],
     'not_in'               => 'O campo :attribute selecionado é inválido.',
     'not_regex'            => 'O campo :attribute possui um formato inválido.',
@@ -131,6 +131,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'products.*.qty' => [
+            'gt' => 'A quantidade deve ser maior que 0',
+            'numeric' => 'A quantidade informada é inválida'
+        ]
     ],
 
     /*
@@ -150,7 +154,10 @@ return [
         'price' => 'Preço',
         'name' => 'Nome',
         'email' => 'E-mail',
-        'password' => 'Senha'
+        'password' => 'Senha',
+        'client' => 'Cliente',
+        'paymode' => 'Método de Pagamento',
+        'products' => 'Produtos'
     ],
 
 ];

@@ -11,4 +11,8 @@ class Sale extends Model
       'client_id',
       'paymode_id'
     ];
+
+    public function salesLine() {
+      return $this->hasMany('DevChallenge\Models\ProductSale');
+    }
 }

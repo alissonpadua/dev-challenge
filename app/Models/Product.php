@@ -15,7 +15,12 @@ class Product extends Model
       'price'
     ];
 
-    public function category(){
+    public function category() {
       return $this->belongsTo('DevChallenge\Models\Category');
     }
+
+    public function salesLine() {
+      return $this->hasMany('DevChallenge\Models\ProductSale');
+    }
+
 }

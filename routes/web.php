@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('seller', 'SellerController');
     Route::resource('client', 'ClientController');
     Route::resource('paymode', 'PaymodeController');
+    Route::resource('sale', 'SaleController');
 
     Route::get('logout', 'SellerController@logout');
 
